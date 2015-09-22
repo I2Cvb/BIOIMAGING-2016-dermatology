@@ -18,6 +18,52 @@ Data space sampling is related with the generation of new synthetic samples by m
 
 A synthetic example illustrating the results of these deformation is presented in Fig.\,\ref{fig:DSOS}.
 
+\input{./content/experiments-results/figures/evaluation_corolary_def.tex}
+\begin{figure*}
+
+  \def\myRadius{.65cm}
+  \def\vennSpace{(0,0) rectangle (2.6cm,1.6cm)}
+  \def\predictedCircle{(.8cm,.8cm) circle (\myRadius)}
+  \def\actualCircle{(1.8cm,.8cm) circle (\myRadius)}
+  \def\myLabelRadius{.450cm}
+
+  \subfloat[][Confusion matrix with truly and falsely positive samples detected (TP, FP) in the first row, from left to right and the falsely and truly negative samples detected (FN, TN) in the second row, from left to right.]{
+    \label{fig:evaluation:confusion_matrix}
+    \begin{tikzpicture}[scale=0.8]
+      \node at (0,0){
+        \begin{tabular}{
+            >{\centering}m{1em} >{\centering}m{1em} >{\centering}m{1in} >{\centering\arraybackslash}m{1in}}
+          % c>{\centering}m{2em}ccc}
+          & & \multicolumn{2}{c}{ Actual Class }\\
+          & & A+ & A- \\
+          % \parbox[t]{2mm}{\multirow{2}{*}{\rotatebox[origin=c]{90}{\usebox \centering Predicted Class}}}& P+ &  \tikz{\tp} & \tikz{\fp} \\
+          \multirow{3}{*}{\rotatebox[origin=c]{90}{Predicted Class}}& P+ &  \tikz{\tp} & \tikz{\fp} \\
+          & P- & \tikz{\fn} & \tikz{\tn}
+        \end{tabular}
+      };
+    \end{tikzpicture}
+  }~~~
+  \centering
+  \subfloat[][\acl*{se} and \acl*{sp} evaluation, corresponding to the ratio of the doted area over the blue area.]{
+    \label{fig:evaluation:roc_axis}
+    \begin{tikzpicture}[scale=0.8]
+      \def\seEquation{$SE = \frac{TP}{TP+FN}$}
+      \def\spEquation{$SP = \frac{TN}{TN+FP}$}
+      \node[label={[]below:\seEquation}](se){\tikz{\se}};
+      \node[right=5pt of se, label={[]below:\spEquation}]{\tikz{\sp}};
+      % \node[label={[]right:\seEquation}](se){\tikz{\se}};
+      % \node[below=5pt of se, label={[]right:\spEquation}]{\tikz{\sp}};
+    \end{tikzpicture}
+  }
+
+  \caption{Evaluation metrics:
+    \protect\subref{fig:evaluation:confusion_matrix} confusion matrix,
+    \protect\subref{fig:evaluation:roc_axis} \acl*{se} - \acl*{sp}
+  }
+  \label{fig:evaluation}
+\end{figure*}
+
+
 \subsection{Feature space sampling}
 
 Considering the problem of imbalanced, \ac{us} is performed such that the number of samples of the majority class is reduced to be equal to the number of samples of the minority class.
@@ -65,54 +111,6 @@ In that regard, two different combinations are tested.
   \item[\ac{smote} + \ac{enn}] are combined for the same aforementioned reason~\cite{batista2004study}.
 \end{description}
 
-
-\input{./content/experiments-results/figures/evaluation_corolary_def.tex}
-\begin{figure}
-
-  \def\myRadius{.65cm}
-  \def\vennSpace{(0,0) rectangle (2.6cm,1.6cm)}
-  \def\predictedCircle{(.8cm,.8cm) circle (\myRadius)}
-  \def\actualCircle{(1.8cm,.8cm) circle (\myRadius)}
-  \def\myLabelRadius{.450cm}
-
-  \subfloat[][Confusion matrix with truly and falsely positive samples detected (TP, FP) in the first row, from left to right and the falsely and truly negative samples detected (FN, TN) in the second row, from left to right.]{
-    \label{fig:evaluation:confusion_matrix}
-    \begin{tikzpicture}[scale=0.8]
-      \node at (0,0){
-        \begin{tabular}{
-            >{\centering}m{1em} >{\centering}m{1em} >{\centering}m{1in} >{\centering\arraybackslash}m{1in}}
-          % c>{\centering}m{2em}ccc}
-          & & \multicolumn{2}{c}{ Actual Class }\\
-          & & A+ & A- \\
-          % \parbox[t]{2mm}{\multirow{2}{*}{\rotatebox[origin=c]{90}{\usebox \centering Predicted Class}}}& P+ &  \tikz{\tp} & \tikz{\fp} \\
-          \multirow{3}{*}{\rotatebox[origin=c]{90}{Predicted Class}}& P+ &  \tikz{\tp} & \tikz{\fp} \\
-          & P- & \tikz{\fn} & \tikz{\tn}
-        \end{tabular}
-      };
-    \end{tikzpicture}
-  }\\
-  \centering
-  \subfloat[][\acl*{se} and \acl*{sp} evaluation, corresponding to the ratio of the doted area over the blue area.]{
-    \label{fig:evaluation:roc_axis}
-    \begin{tikzpicture}[scale=0.8]
-      \def\seEquation{$SE = \frac{TP}{TP+FN}$}
-      \def\spEquation{$SP = \frac{TN}{TN+FP}$}
-      \node[label={[]below:\seEquation}](se){\tikz{\se}};
-      \node[right=5pt of se, label={[]below:\spEquation}]{\tikz{\sp}};
-      % \node[label={[]right:\seEquation}](se){\tikz{\se}};
-      % \node[below=5pt of se, label={[]right:\spEquation}]{\tikz{\sp}};
-    \end{tikzpicture}
-  }
-
-  \caption{Evaluation metrics:
-    \protect\subref{fig:evaluation:confusion_matrix} confusion matrix,
-    \protect\subref{fig:evaluation:roc_axis} \acl*{se} - \acl*{sp}
-  }
-  \label{fig:evaluation}
-\end{figure}
-
-
-
 \section{\uppercase{Classification}}
 \noindent The classification is performed using a \ac{rf} classifier. 
 \Ac{rf} is an ensemble of decision trees~\cite{breiman2001random} which generalizes the classification process by using different bootstrap samples of the original data and splitting the feature dimensions at each node.
@@ -120,8 +118,7 @@ Each bootstrap with $M$ attributes is used to train one decision tree and at eac
 The trees in \ac{rf} are grown to their maximum length without any pruning.
 Each tree in the ensemble casts a unit vote in the final prediction and the final prediction is based on combination of all the votes. 
 
-
-\subsection{Validation}
+%\subsection{Validation}
 The validation model used is a 10-fold cross-validation in which \SI{80}{\percent} of the data are used for training and \SI{20}{\percent} are used for testing. 
 The training set is balanced using previously described imbalanced techniques. 
 The classification performance are reported in terms of average \ac{se}(TPR) and \ac{sp}(TNR) over 10 runs of cross-validation. 
