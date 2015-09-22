@@ -1,19 +1,9 @@
 % include the figures path relative to the master file
 \graphicspath{ {./content/method/figures/} }
 
-\begin{figure*}
-	\subfloat[][]{
-	\label{fig:GridOriginal}\includegraphics[width=0.26\textwidth, height = 0.08\textheight]{OG.png}}\hfill
-	\subfloat[][]{
-	\label{fig:GridGaussian}\includegraphics[width=0.26\textwidth, height = 0.08\textheight]{GG3_80.png}}\hfill
-	\subfloat[][]{
-	\label{fig:GridBarrel}\includegraphics[width=0.26\textwidth, height = 0.08\textheight]{BG3_145.png}}
-	\caption{Data space transformation: \protect\subref{fig:GridOriginal} original synthetic data, \protect\subref{fig:GridGaussian} \acs*{rdgm} deformation, \protect\subref{fig:GridBarrel} \acs*{bd} deformation.}
-	\label{fig:DSOS}
-\end{figure*}
+\section{\uppercase{Balancing strategies}}\label{sec:met}
 
-\section{Balancing strategies}\label{sec:met}
-Considering a binary classification problem, the class with the smallest number of samples is defined as the \textit{minority} class and its counterpart is defined as the \textit{majority} class.
+\noindent Considering a binary classification problem, the class with the smallest number of samples is defined as the \textit{minority} class and its counterpart is defined as the \textit{majority} class.
 The problem of data balancing corresponds to equalizing the number of samples of both the minority and majority classes. This task can be achieved in either data or feature space.
 
 \subsection{Data space sampling}
@@ -35,10 +25,23 @@ A synthetic example illustrating the results of these deformation is presented i
 % \label{tab:tab1}
 % \end{table*}
 
+\newpage
+
+\onecolumn
+
+\begin{landscape}
+
+\begin{figure*}[Ht]
+  \centering
+  \includegraphics[width=1.4\textwidth]{method.png}
+  \caption{Framework outline}
+	\label{fig:schema}
+\end{figure*}
+
 \begin{table*}
 \caption{The obtained results with different balancing techniques for color and texture features using a \acs*{rf} classifier. The first and second highest results for each feature set are highlighted in dark and lighter gray colors, respectively.}
 \centering
-\resizebox{1.\textwidth}{!}{
+\resizebox{1.42\textwidth}{!}{
 \begin{tabular}{l cccccc		cccccc		cccccc}
 \toprule
 Features &  \multicolumn{6}{l}{Color}& \multicolumn{6}{l}{Texture} & \multicolumn{6}{l}{Combined}\\
@@ -69,13 +72,16 @@ Features &  \multicolumn{6}{l}{Color}& \multicolumn{6}{l}{Texture} & \multicolum
 \label{tab:tab1}
 \end{table*}
 
+\normalsize \vfill 
+
+\end{landscape}
+
+\newpage
+
+\twocolumn
 
 \subsection{Feature space sampling}
 
-%Considering a binary classification problem, the class with the smallest number of samples is defined as the \textit{minority} class and its counterpart is defined as the \textit{majority} class.
-%
-%The problem of data balancing corresponds to equalizing the number of samples of both the minority and majority classes.
-%Subsequently, 
 Considering the problem of imbalanced, \ac{us} is performed such that the number of samples of the majority class is reduced to be equal to the number of samples of the minority class.
 The following methods are considered to perform such balancing.
 

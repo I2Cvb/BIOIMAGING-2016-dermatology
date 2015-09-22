@@ -1,18 +1,23 @@
 % include the figures path relative to the master file
 \graphicspath{ {./content/method/figures/} }
 
-\section{Material and Methods}\label{sec:mm}
+\begin{figure*}
+	\subfloat[][]{
+	\label{fig:GridOriginal}\includegraphics[width=0.3\textwidth]{OG.png}}\hfill
+	\subfloat[][]{
+	\label{fig:GridGaussian}\includegraphics[width=0.3\textwidth]{GG3_80.png}}\hfill
+	\subfloat[][]{
+	\label{fig:GridBarrel}\includegraphics[width=0.3\textwidth]{BG3_145.png}}
+	\caption{Data space transformation: \protect\subref{fig:GridOriginal} original synthetic data, \protect\subref{fig:GridGaussian} \acs*{rdgm} deformation, \protect\subref{fig:GridBarrel} \acs*{bd} deformation.}
+	\label{fig:DSOS}
+\end{figure*}
+
+
+\section{\uppercase{Material and Methods}}\label{sec:mm}
 
 % Our framework is formulated as a standard classification framework. First the dermoscopy images are represented by a set of elements or features. With reference to our previous studies on melanoma classification \cite{rastgoo2015automatic, rastgoo2015ensemble} the texture and color features with the highest performance are selected. These features include, \Ac{clbp} \cite{guo2010completed}, Gabor filter \cite{Manjunath96-45}, color variance and histogram and hue and opponent angle color histogram \cite{van2006coloring}. The extracted features are explained in the following. The retrieved features are used to train a \Ac{rf} classifier.
 
-\begin{figure*}[Ht]
-  \centering
-  \includegraphics[width=1.\textwidth]{method.png}
-  \caption{Framework outline}
-	\label{fig:schema}
-\end{figure*}
-
-Figure~\ref{fig:schema} illustrates and summarizes the experiment designed to explore the data imbalance problem during the classification of dermoscopic images.
+\noindent Figure~\ref{fig:schema} illustrates and summarizes the experiment designed to explore the data imbalance problem during the classification of dermoscopic images.
 The experimentation is based on the works presented in~\cite{rastgoo2015automatic, rastgoo2015ensemble} and follows a cross-validated classification evaluation framework.
 Details of the dataset used for the experiments are given in Sect.\,\ref{sec:dataset}. 
 The extracted features correspond to the highest performing subset of features according to the latter mentioned studies and are summarized in Sect.\,\ref{sec:feat}.
@@ -45,12 +50,11 @@ The \ac{clbp} are calculated for each pixel in a given image and their histogram
 This filter is formulated in Eq.\,\eqref{Eq:Gabor} as two Gaussian with standard deviations of $\sigma_{x}$ and $\sigma_{y}$ that vary along $x$ and $y$ axes and it is modulated by a complex sinusoidal with a wavelength of $\lambda$. 
 Here $\theta$ represents the orientation of the Gabor filter, $\psi$ is the phase offset and $s$ is the scale factor. 
 The filter bank is created using six different orientations equally spaced in the interval $[0, \pi]$, along 4 scales with a downsizing factor of 2:
-\begin{equation}\footnotesize
+\begin{equation}\scriptsize
   \label{Eq:Gabor}
   g(x,y) = \exp{ \left(-\left( \frac{x'^{2}}{2\sigma_{x}^{2}}+\frac{y'^{2}}{2\sigma_{y}^{2}} \right) \right)} \cos\left( 2\pi\frac{x'}{\lambda}+\psi \right) \ , 
 \end{equation}
 \noindent where
-%\vspace{-0.1cm}
 \begin{align*}
   x' &= s\left( x\cos\theta+y\sin\theta\right) \ ,  \\
   y' &= s\left( -x\sin\theta +y\cos\theta\right) \ .
