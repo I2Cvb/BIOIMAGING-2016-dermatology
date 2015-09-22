@@ -18,68 +18,6 @@ Data space sampling is related with the generation of new synthetic samples by m
 
 A synthetic example illustrating the results of these deformation is presented in Fig.\,\ref{fig:DSOS}.
 
-% \begin{table*}
-% \caption{The obtained results with different balancing techniques for color and texture features using a \acs*{rf} classifier. The first and second highest results for each feature set are highlighted in dark and lighter gray colors respectively.}
-% \centering
-% \resizebox{1.\textwidth}{!}{ \input{./content/experiments-results/tables/sens_spec.tex}}
-% \label{tab:tab1}
-% \end{table*}
-
-\newpage
-
-\onecolumn
-
-\begin{landscape}
-
-\begin{figure*}[Ht]
-  \centering
-  \includegraphics[width=1.4\textwidth]{method.png}
-  \caption{Framework outline}
-	\label{fig:schema}
-\end{figure*}
-
-\begin{table*}
-\caption{The obtained results with different balancing techniques for color and texture features using a \acs*{rf} classifier. The first and second highest results for each feature set are highlighted in dark and lighter gray colors, respectively.}
-\centering
-\resizebox{1.42\textwidth}{!}{
-\begin{tabular}{l cccccc		cccccc		cccccc}
-\toprule
-Features &  \multicolumn{6}{l}{Color}& \multicolumn{6}{l}{Texture} & \multicolumn{6}{l}{Combined}\\
-  \cmidrule(r){2-7}  \cmidrule(r){8-13}  \cmidrule(r){14-19}  
-		   & \multicolumn{2}{c}{$C_{1}$}& \multicolumn{2}{c}{$C_{2}$}& \multicolumn{2}{c}{$C_{1,2}$}& \multicolumn{2}{c}{$T_{1}$} &  \multicolumn{2}{c}{$T_{2}$} & \multicolumn{2}{c}{$T_{1,2}$}& \multicolumn{2}{c}{$T_{1},C_{1,2}$}& \multicolumn{2}{c}{$T_{2},C_{1,2}$}& \multicolumn{2}{c}{$T_{1,2},C_{1,2}$}\\ 
-  \cmidrule(r){2-3}  \cmidrule(r){4-5} \cmidrule(r){6-7} \cmidrule(r){8-9} \cmidrule(r){10-11} \cmidrule(r){12-13} \cmidrule(r){14-15} \cmidrule(r){16-17} \cmidrule(r){18-19} 
-  Balancing techniques & \makebox[0.5cm][l]{\acs*{se}}& \makebox[0.5cm][l]{\acs*{sp}} & \makebox[0.5cm][l]{\acs*{se}} & \makebox[0.5cm][l]{\acs*{sp}} & \makebox[0.5cm][l]{\acs*{se}} &\makebox[0.5cm][l]{\acs*{sp}} &\makebox[0.5cm][l]{\acs*{se}} &\makebox[0.5cm][l]{\acs*{sp}} &\makebox[0.5cm][l]{\acs*{se}} & \makebox[0.5cm][l]{\acs*{sp}} &\makebox[0.5cm][l]{\acs*{se}} &\makebox[0.5cm][l]{\acs*{sp}} & \makebox[0.5cm][l]{\acs*{se}} &\makebox[0.5cm][l]{\acs*{sp}} &\makebox[0.5cm][l]{\acs*{se}} &\makebox[0.5cm][l]{\acs*{sp}}& \makebox[0.5cm][l]{\acs*{se}} &\makebox[0.5cm][l]{\acs*{sp}}  \\ \midrule
-\multicolumn{1}{c}{IB} & 52.50 & 89.58 & 75.00 & 88.75 & 71.25& 87.50& 38.75 & 91.67 & 60.00 & 96.25 & 66.25 & 93.75 &73.75 & 89.58&71.25 & 89.58 & 71.25& 92.50\\
-\midrule \midrule
-\multicolumn{1}{c}{\acs*{os}} &\cellcolor[gray]{0.6}93.75 &\cellcolor[gray]{0.6}66.67 &80.00 & 86.25& 82.50 & 87.08  & 43.75 &83.75 &72.50& 90.00 & 70.00& 91.67  &77.50 & 87.08 &81.25 &88.33 &78.75 &88.33  \\
-\midrule \midrule
-\multicolumn{1}{c}{\acs*{ros}} &55.00 & 80.83& 80.00 & 84.17& 72.50 &85.42 &42.50 & 82.08 &60.00 & 89.17 &66.25 &87.92&75.00&85.42&73.75&86.25&73.75 &85.83\\
-\multicolumn{1}{c}{\acs*{smote}} & 60.00 & 82.50 & 78.75 & 84.58 & 75.00 & 70.00 & 56.25 & 74.17 & 61.25 & 87.50 & 84.17 &87.08 & 78.75& 85.00 &73.75 & 84.58 &73.75&85.00 \\ 
-\hdashline \noalign{\vskip 3pt}
-\multicolumn{1}{c}{\acs*{rus}} & 72.50 & 72.92 & 86.25 & 80.00 & 78.75 &80.00 & 67.50 & 53.33 &76.25 &76.25  &85.00 &78.75 &\cellcolor[gray]{0.6}91.25 & \cellcolor[gray]{0.6}75.00 & 85.00 & 78.75 &\cellcolor[gray]{0.6}92.50 &\cellcolor[gray]{0.6}78.33\\
-\multicolumn{1}{c}{\acs*{tl}} & 51.25 & 86.25 & 76.25 & 87.92&67.50 & 88.33  & 37.50 & 87.92 & 65.00 &90.42 & 68.75 & 91.67 & 73.75 & 88.75 &63.75 & 90.00 & 72.50 & 91.25\\
-\multicolumn{1}{c}{\acs*{cus}} & 81.25 & 67.92 & 80.00 & 84.58&\cellcolor[gray]{0.8} 86.25 & \cellcolor[gray]{0.8}80.42 & 56.25 & 65.83 & 70.00 & 77.50 & 85.00 & 77.08 & 83.75 & 81.25 & 80.00 & 84.17 & 83.75 & 82.92\\
-\multicolumn{1}{c}{\acs*{nm1}} & 67.50 & 72.08 & 86.25 & 79.17& 85.00 & 82.50 & 72.50 & 43.75 & 80.00 & 62.50 &\cellcolor[gray]{0.6} 87.50 &\cellcolor[gray]{0.6} 66.67 & 85.00 & 82.08 & \cellcolor[gray]{0.8}86.25 &\cellcolor[gray]{0.8}80.42 & 87.50 & 80.83\\
-\multicolumn{1}{c}{\acs*{nm2}} & 70.00 & 72.92 & 86.25 & 81.25 & 85.00 & 82.92 & \cellcolor[gray]{0.8}76.25 &\cellcolor[gray]{0.8} 48.75& \cellcolor[gray]{0.6}86.25 &\cellcolor[gray]{0.6} 40.83 & \cellcolor[gray]{0.8}86.25 &\cellcolor[gray]{0.8} 51.25& \cellcolor[gray]{0.8}87.50 & \cellcolor[gray]{0.8}82.08 &\cellcolor[gray]{0.6}92.50 &\cellcolor[gray]{0.6}77.50& \cellcolor[gray]{0.8}91.25 &\cellcolor[gray]{0.8}81.67\\
-\multicolumn{1}{c}{\acs*{nm3}} & \cellcolor[gray]{0.8}82.50 & \cellcolor[gray]{0.8}75.00 &\cellcolor[gray]{0.8} 87.50 &\cellcolor[gray]{0.8} 80.83 & 85.00 & 80.42 &73.75 & 55.83 & 72.50 & 82.50 & 82.50 & 80.42 & 83.75 & 81.25 & 85.00 & 80.00 & 86.25 & 80.42\\
-\multicolumn{1}{c}{\acs*{ncr}} & {\color{blue}66.25} & {\color{blue}76.67} & \cellcolor[gray]{0.6}{\color{blue} 87.50} &\cellcolor[gray]{0.6}{\color{blue} 81.25} &{\color{blue}85.00} &{\color{blue} 82.08} & {\color{blue}67.50} & {\color{blue}67.92} & {\color{blue}75.00} & {\color{blue}85.83} & {\color{blue} 82.50} & {\color{blue} 83.33} & {\color{blue} 86.25} & {\color{blue} 81.67} & {\color{blue}82.50} &{\color{blue} 85.00} & {\color{blue}83.75} &{\color{blue} 85.42}\\
-\hdashline \noalign{\vskip 3pt}
-\multicolumn{1}{c}{\acs*{smote} + \acs*{enn}} & 76.25 & 73.33 & 85.00 & 81.25 & 85.00 & 82.08 &\cellcolor[gray]{0.6} 81.25 &\cellcolor[gray]{0.6} 56.25 & 76.25 & 82.08 & 80.00 & 79.58 & 86.25 & 81.25 & 83.75 & 82.50 & 78.75 & 82.92\\
-\multicolumn{1}{c}{\acs*{smote} + \acs*{tl}} & 75.00 & 73.75 & 83.75 & 82.50 & \cellcolor[gray]{0.6}87.50 &\cellcolor[gray]{0.6}80.83 & 72.50 & 59.17 & \cellcolor[gray]{0.8}77.50 &\cellcolor[gray]{0.8} 82.08 & 78.75 & 78.75 & 85.00 & 82.08 & 77.50 & 82.92 & 88.75 & 82.50\\
-\bottomrule
-\end{tabular}
-}
-\label{tab:tab1}
-\end{table*}
-
-\normalsize \vfill 
-
-\end{landscape}
-
-\newpage
-
-\twocolumn
-
 \subsection{Feature space sampling}
 
 Considering the problem of imbalanced, \ac{us} is performed such that the number of samples of the majority class is reduced to be equal to the number of samples of the minority class.
@@ -126,6 +64,70 @@ In that regard, two different combinations are tested.
 \ac{smote} over-sampling can lead to overfitting which can be avoided by removing the \ac{tl} from both majority and minority classes~\cite{prati2009data}.
   \item[\ac{smote} + \ac{enn}] are combined for the same aforementioned reason~\cite{batista2004study}.
 \end{description}
+
+
+\input{./content/experiments-results/figures/evaluation_corolary_def.tex}
+\begin{figure}
+
+  \def\myRadius{.65cm}
+  \def\vennSpace{(0,0) rectangle (2.6cm,1.6cm)}
+  \def\predictedCircle{(.8cm,.8cm) circle (\myRadius)}
+  \def\actualCircle{(1.8cm,.8cm) circle (\myRadius)}
+  \def\myLabelRadius{.450cm}
+
+  \subfloat[][Confusion matrix with truly and falsely positive samples detected (TP, FP) in the first row, from left to right and the falsely and truly negative samples detected (FN, TN) in the second row, from left to right.]{
+    \label{fig:evaluation:confusion_matrix}
+    \begin{tikzpicture}[scale=0.8]
+      \node at (0,0){
+        \begin{tabular}{
+            >{\centering}m{1em} >{\centering}m{1em} >{\centering}m{1in} >{\centering\arraybackslash}m{1in}}
+          % c>{\centering}m{2em}ccc}
+          & & \multicolumn{2}{c}{ Actual Class }\\
+          & & A+ & A- \\
+          % \parbox[t]{2mm}{\multirow{2}{*}{\rotatebox[origin=c]{90}{\usebox \centering Predicted Class}}}& P+ &  \tikz{\tp} & \tikz{\fp} \\
+          \multirow{3}{*}{\rotatebox[origin=c]{90}{Predicted Class}}& P+ &  \tikz{\tp} & \tikz{\fp} \\
+          & P- & \tikz{\fn} & \tikz{\tn}
+        \end{tabular}
+      };
+    \end{tikzpicture}
+  }\\
+  \centering
+  \subfloat[][\acl*{se} and \acl*{sp} evaluation, corresponding to the ratio of the doted area over the blue area.]{
+    \label{fig:evaluation:roc_axis}
+    \begin{tikzpicture}[scale=0.8]
+      \def\seEquation{$SE = \frac{TP}{TP+FN}$}
+      \def\spEquation{$SP = \frac{TN}{TN+FP}$}
+      \node[label={[]below:\seEquation}](se){\tikz{\se}};
+      \node[right=5pt of se, label={[]below:\spEquation}]{\tikz{\sp}};
+      % \node[label={[]right:\seEquation}](se){\tikz{\se}};
+      % \node[below=5pt of se, label={[]right:\spEquation}]{\tikz{\sp}};
+    \end{tikzpicture}
+  }
+
+  \caption{Evaluation metrics:
+    \protect\subref{fig:evaluation:confusion_matrix} confusion matrix,
+    \protect\subref{fig:evaluation:roc_axis} \acl*{se} - \acl*{sp}
+  }
+  \label{fig:evaluation}
+\end{figure}
+
+
+
+\section{\uppercase{Classification}}
+\noindent The classification is performed using a \ac{rf} classifier. 
+\Ac{rf} is an ensemble of decision trees~\cite{breiman2001random} which generalizes the classification process by using different bootstrap samples of the original data and splitting the feature dimensions at each node.
+Each bootstrap with $M$ attributes is used to train one decision tree and at each node in the tree, the best decision is taken based on gini criterion on the randomly selected $m$ attributes (such as $m<<M$). 
+The trees in \ac{rf} are grown to their maximum length without any pruning.
+Each tree in the ensemble casts a unit vote in the final prediction and the final prediction is based on combination of all the votes. 
+
+
+\subsection{Validation}
+The validation model used is a 10-fold cross-validation in which \SI{80}{\percent} of the data are used for training and \SI{20}{\percent} are used for testing. 
+The training set is balanced using previously described imbalanced techniques. 
+The classification performance are reported in terms of average \ac{se}(TPR) and \ac{sp}(TNR) over 10 runs of cross-validation. 
+The visual and analytic interpretation of these evaluation measures are depicted in Fig.\,\ref{fig:evaluation}.
+ 
+
 
 %%% Local Variables: 
 %%% mode: latex

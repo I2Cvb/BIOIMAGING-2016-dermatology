@@ -21,9 +21,10 @@
 The experimentation is based on the works presented in~\cite{rastgoo2015automatic, rastgoo2015ensemble} and follows a cross-validated classification evaluation framework.
 Details of the dataset used for the experiments are given in Sect.\,\ref{sec:dataset}. 
 The extracted features correspond to the highest performing subset of features according to the latter mentioned studies and are summarized in Sect.\,\ref{sec:feat}.
-The classification is performed using a \ac{rf} classifier with 100 unpruned trees using gini criterion.
-The validation model used is a 10-fold cross-validation in which \SI{80}{\percent} of the data are used for training and \SI{20}{\percent} are used for testing.
-Furthermore, we dedicate an entire section (see Sect.\,\ref{sec:met}) to focus on the different balancing strategies.
+The balancing strategies are explained in great details in Sect. \,\ref{sec:met} and finally the validation and classification is discussed in Sect. \,\ref{sec:classification}.
+%We dedicate an entire section (see Sect.\,\ref{sec:met}) to focus on the different balancing strategies.
+%The classification is performed using a \ac{rf} classifier with 100 unpruned trees using gini criterion.
+%The validation model used is a 10-fold cross-validation in which \SI{80}{\percent} of the data are used for training and \SI{20}{\percent} are used for testing.
 
 \subsection{Dataset}\label{sec:dataset}
 The $PH^{2}$ dermoscopic dataset which is acquired at \textit{Dermatology Service of Hospital Pedro Hispano, Matosinhos, Portugal} is used~\cite{barata2013two}.
@@ -62,35 +63,6 @@ The filter bank is created using six different orientations equally spaced in th
 
 \end{description}
 
-% \subsection{validation}
-
-% For evaluation purposes, the results are cross-validated by 10 folds, by splitting 80\% of the data in training and
-% the rest for testing. The training set then is balanced using previously described imbalanced techniques. The classification performance are reported in terms of mean \Ac{se}(TPR) and \Ac{sp}(TNR) of 10-fold cross-validation and \Ac{wracc}. The last measure \cite{lavravc1999rule} was defined to eliminate the elements of \ac{se} score which is attributed to chance. In another words this measure considers the bias of the dataset by cooperating the skew ratio $c= \frac{rn}{rp}$ which takes to account the ratio of the two class \cite{powers2011evaluation}. 
-% The definition of three aforementioned metrics based on the confusion matrix is explained in \ref{Eq:SESPWRacc}.\\
-% %\begin{table}
-% %\caption{Confusion matrix    }
-% %\centering{
-% %\begin{tabular}{ccc}
-% %& \multicolumn{2}{c}{Actual}\\
-% %\midrule
-% %\multicolumn{1}{c|}{\parbox[t]{2mm}{\multirow{2}{*}{\rotatebox[origin=c]{90}{Pred}}}} & TP & FP \\
-% %\multicolumn{1}{c|}{}& FN & TN \\
-% %\end{tabular}}
-% %\end{table}
-% {\color{red}{needs probably more alignment}}
-% \begin{align}\label{Eq:SESPWRacc}
-% \hspace{1.5cm}
-% &\begin{tabular}{ccc}
-% & \multicolumn{2}{c}{Actual}\\
-% \midrule
-% \multicolumn{1}{c|}{\parbox[t]{2mm}{\multirow{2}{*}{\rotatebox[origin=c]{90}{Pred}}}} & TP & FP \\
-% \multicolumn{1}{c|}{}& FN & TN \\
-% \end{tabular} \nonumber \\
-% \ac{se} &= \frac{TP}{TP+FN} \nonumber  \hspace{1cm} 
-% \ac{sp} =  \frac{TN}{TN+FP} \nonumber \\
-% \ac{fpr} &= \frac{FP}{FP+TN} = 1 - \ac{sp} \nonumber \\
-% \ac{wracc} &=  \frac{4c(SE+SP-1)}{(1+c)^2}
-% \end{align}
 
 
 %%% Local Variables:
