@@ -5,25 +5,33 @@
 \section{\uppercase{Experimental Results}}
 \label{sec:exp-res} 
 
-\noindent The classification results are reported in Table~\ref{tab:tab1} using the aforementioned features, the \ac{rf} classifier and the different imbalancing techniques presented in Sect.\,\ref{sec:met}. 
+\noindent The classification results are reported in Table~\ref{tab:tab1} using the aforementioned features, the \ac{rf} classifier, and the different imbalancing techniques presented in Sect.\,\ref{sec:met}. 
+
+\include*{content/method/framework-result-ls}
+
 Table~\ref{tab:tab1} can be divided into three main parts representing the results using imbalance data (IB), the balancing in the data space \ac{os} and the balancing in the feature space.
 These strategies are separated by a double horizontal line.
 The strategies performed in the feature space are subdivided into either \ac{os} or \ac{us} or a combination of \ac{os} follow by \ac{us} (see horizontal dashed line in Table~\ref{tab:tab1}).
-The two highest \ac{se} for each feature set are highlighted in dark and light gray cell colors, respectively. 
-
-\include*{content/method/framework-result-ls}
+In cancer classification such as melanoma, correctly identifying the cancer lesions has very hight importance (i.e high \ac{se}). 
+Thus it is desired to achieve the highest \ac{se} with relative \ac{sp}. 
+In this regard, the highest \ac{se} for each feature set are highlighted in dark gray cell color. 
 
 The obtained results indicate that balancing techniques are essential and improve the classification performance. 
 % Certainly, some techniques are more subjects to the feature representations than others. 
 However, the improvements in comparison to imbalanced classification is evident. 
-For this case study the \ac{us} techniques outperform the \ac{os} techniques. 
+For this case study the \ac{us} techniques (\ac{rus}) and their combination with \ac{os} techniques (\ac{smote}+\ac{tl}) outperform the \ac{os} techniques. 
 Due to the characteristics similarities of melanoma and dysplastic lesions, it is expected to have correlated feature space among melanoma and dysplastic lesions. 
 Subsequently, the miss-leading samples could be removed using \ac{us} and lead to better performance.
-Specifically to our purpose, \ac{nm2} is the algorithm maximizing the sensitivity and in overall, \ac{nm} algorithms perform the best on our dataset. 
-However, \ac{ncr} algorithm (see results highlighted in blue in Table~\ref{tab:tab1}) achieves the best performance, considering a trade-off between \ac{se} and \ac{sp}. 
+Specifically to our purpose, \ac{rus} achieve the highest \ac{se} and \ac{sp} of 92.50 \% and 78.33 \%, respectively on the combination of all the features ($T_{12}, C_{1,2}$). 
+This performance was followed by \ac{nm2} algorithm and combination of Gabor and color features ($T_{2}, C_{1,2}$), with \ac{se} and \ac{sp} of 92.50 \% and 77.50 \%, respectively.  
 Focusing only on \ac{os} techniques, \ac{os} in data space outperforms the techniques performing in feature space.
 
+Comparing the color features, opponent color angle and hue histogram feature descriptor $C_{2}$ has a better performance than well-used color statistics $C_{1}$. 
+In texture domain, Gabor descriptor $T_{2}$ outperforms CLBP features $T_{1}$.
+In general, it is evident that better results are achieve by combination of color and texture features. 
 
+%is the algorithm maximizing the sensitivity and in overall, \ac{nm} algorithms perform the best on our dataset. 
+%However, \ac{ncr} algorithm (see results highlighted in blue in Table~\ref{tab:tab1}) achieves the best performance, considering a trade-off between \ac{se} and \ac{sp}. 
 % Table~\ref{tab:tab1} show the obtained results in terms of 
 
 % Some stuff that emac's colegues use

@@ -21,17 +21,17 @@
 The experimentation is based on the works presented in~\cite{rastgoo2015automatic, rastgoo2015ensemble} and follows a cross-validated classification evaluation framework.
 Details of the dataset used for the experiments are given in Sect.\,\ref{sec:dataset}. 
 The extracted features correspond to the highest performing subset of features according to the latter mentioned studies and are summarized in Sect.\,\ref{sec:feat}.
-The balancing strategies are explained in great details in Sect. \,\ref{sec:met} and finally the validation and classification is discussed in Sect. \,\ref{sec:classification}.
+The balancing strategies are explained in great details in Sect. \,\ref{sec:met} and finally the validation and classification is discussed in Sect. \,\ref{sec:clas-val}.
 %We dedicate an entire section (see Sect.\,\ref{sec:met}) to focus on the different balancing strategies.
 %The classification is performed using a \ac{rf} classifier with 100 unpruned trees using gini criterion.
 %The validation model used is a 10-fold cross-validation in which \SI{80}{\percent} of the data are used for training and \SI{20}{\percent} are used for testing.
 
 \subsection{Dataset}\label{sec:dataset}
-The $PH^{2}$ dermoscopic dataset which is acquired at \textit{Dermatology Service of Hospital Pedro Hispano, Matosinhos, Portugal} is used~\cite{barata2013two}.
-The dermoscopic dataset is acquired with Tuebinger Mole Analyzer system with a magnification of $20 \times$.
+The solely public dermoscopic dataset $PH^{2}$~\cite{barata2013two} is used.   
+This dataset is acquired at \textit{Dermatology Service of Hospital Pedro Hispano, Matosinhos, Portugal}~\cite{barata2013two} with Tuebinger Mole Analyzer system with a magnification of $20 \times$.
 The 8-bits~RGB color dermoscopic images were obtained under the same conditions with a resolution of $\SI{768}{px} \times \SI{560}{px}$. 
 This dataset contains 200 dermoscopic images divided into 160 benign and dysplastic and 40 melanoma lesions. Moreover, each lesion is segmented and histological diagnosis are provided. 
-In this study, we conducted the experiments with a subset of 39 melanoma and 117 benign and dysplastic lesions with an imbalance ratio of 1:3.
+In this study, we conducted the experiments with a subset of 39 melanoma and 117 benign and dysplastic lesions with an imbalance ratio of 1:3. Four images were removed due to artifacts such as hair occlusions. 
 
 \subsection{Feature extraction}\label{sec:feat}
 
