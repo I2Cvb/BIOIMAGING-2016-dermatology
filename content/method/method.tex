@@ -4,7 +4,7 @@
 \section{\uppercase{Balancing strategies}}\label{sec:met}
 
 \noindent Considering a binary classification problem, the class with the smallest number of samples is defined as the \textit{minority} class and its counterpart is defined as the \textit{majority} class.
-The problem of data balancing corresponds to equalizing the number of samples of both the minority and majority classes. This task can be achieved in either data or feature space.
+The problem of data balancing corresponds to equalize the number of samples of both the minority and majority classes. This task can be achieved in either data or feature space.
 
 \subsection{Data space sampling}
 
@@ -81,7 +81,7 @@ The pair $(x_i, x_j)$ is defined as a \ac{tl} if, by relaxing the class label di
 \Ac{us} is performed by removing the samples belonging to the majority class and forming a \ac{tl}.
 It can be noted that this \ac{us} strategy does not enforce a strict balancing between the majority and the minority classes.
   \item[\Ac{cus}] refers to the use of a $k$-means to cluster the feature space such that $k$ is set to be equal to the number of samples composing the minority class.
-Hence, the centroids of theOAse clusters define the new samples of the majority class. 
+Hence, the centroids of these clusters define the new samples of the majority class. 
   \item[\Ac{nm}] offers three different methods to under-sample the majority class~\cite{mani2003knn}.
 In \ac{nm1}, samples from the majority class are selected such that for each sample, the average distance to the $k$ \ac{nn} samples from the minority class is minimum.
 \ac{nm2} diverges from \ac{nm1} by considering the $k$ farthest neighbours samples from the minority class.
