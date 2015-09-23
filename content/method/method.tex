@@ -10,7 +10,7 @@ The problem of data balancing corresponds to equalize the number of samples of b
 
 Data space sampling is related with the generation of new synthetic samples by modifying the original data ahead of any feature extraction processes. 
 \Ac{os} is performed on the original dataset by generating synthetic melanoma images based on two types of deformation~\cite{rastgoo2015ensemble}. Furthermore, cubic b-spline interpolation is used with both methods to approximate non-integer points in the image.
-These deformations are considered, since, due to un-flatten surface of some body parts, skin wrinkles, camera rotation and position, they are more likely to occur. 
+These deformations are considered since they are more likely to occur, due to un-flatten surface of some body parts, skin wrinkles, camera rotation, and position. 
 %Different rotations and barrel deformation are considered to account for camera rotation and body un-flatten surfaces. 
 %The \ac{rdgm} deformation with specific Gaussian criteria is considered to account for acceptable amount of wrinkles.
 
@@ -19,59 +19,18 @@ These deformations are considered, since, due to un-flatten surface of some body
 	\item[\Ac{rdgm}] achieved by deforming the original image by adding a random Gaussian motion $\mathcal{N}(\mu, \sigma) = (0,5)$ at each pixel compounded with a global rotation of~\SI{80}{\degree}.
 	\item[\Ac{bd}] corresponds to a deformation of the original image using barrel distortion compounded with a global rotation of~\SI{145}{\degree}.
 \end{description}
-
 A synthetic example illustrating the results of these deformation is presented in Fig.\,\ref{fig:DSOS}.
-
-\input{./content/experiments-results/figures/evaluation_corolary_def.tex}
-\begin{figure*}
-
-  \def\myRadius{.65cm}
-  \def\vennSpace{(0,0) rectangle (2.6cm,1.6cm)}
-  \def\predictedCircle{(.8cm,.8cm) circle (\myRadius)}
-  \def\actualCircle{(1.8cm,.8cm) circle (\myRadius)}
-  \def\myLabelRadius{.450cm}
-
-  \subfloat[][Confusion matrix with truly and falsely positive samples detected (TP, FP) in the first row, from left to right and the falsely and truly negative samples detected (FN, TN) in the second row, from left to right.]{
-    \label{fig:evaluation:confusion_matrix}
-    \begin{tikzpicture}[scale=0.8]
-      \node at (0,0){
-        \begin{tabular}{
-            >{\centering}m{1em} >{\centering}m{1em} >{\centering}m{1in} >{\centering\arraybackslash}m{1in}}
-          % c>{\centering}m{2em}ccc}
-          & & \multicolumn{2}{c}{ Actual Class }\\
-          & & A+ & A- \\
-          % \parbox[t]{2mm}{\multirow{2}{*}{\rotatebox[origin=c]{90}{\usebox \centering Predicted Class}}}& P+ &  \tikz{\tp} & \tikz{\fp} \\
-          \multirow{3}{*}{\rotatebox[origin=c]{90}{Predicted Class}}& P+ &  \tikz{\tp} & \tikz{\fp} \\
-          & P- & \tikz{\fn} & \tikz{\tn}
-        \end{tabular}
-      };
-    \end{tikzpicture}
-  }~~~
-  \centering
-  \subfloat[][\acl*{se} and \acl*{sp} evaluation, corresponding to the ratio of the doted area over the blue area.]{
-    \label{fig:evaluation:roc_axis}
-    \begin{tikzpicture}[scale=0.8]
-      \def\seEquation{$SE = \frac{TP}{TP+FN}$}
-      \def\spEquation{$SP = \frac{TN}{TN+FP}$}
-      \node[label={[]below:\seEquation}](se){\tikz{\se}};
-      \node[right=5pt of se, label={[]below:\spEquation}]{\tikz{\sp}};
-      % \node[label={[]right:\seEquation}](se){\tikz{\se}};
-      % \node[below=5pt of se, label={[]right:\spEquation}]{\tikz{\sp}};
-    \end{tikzpicture}
-  }
-
-  \caption{Evaluation metrics:
-    \protect\subref{fig:evaluation:confusion_matrix} confusion matrix,
-    \protect\subref{fig:evaluation:roc_axis} \acl*{se} - \acl*{sp}
-  }
-  \label{fig:evaluation}
-\end{figure*}
-
 
 \subsection{Feature space sampling}
 
+Three strategies can be employed to overcome the problem of imbalanced dataset: (i) \ac{us}, (ii) \ac{os}, and (iii) a combination of both.
+The following sections give an overview of the techniques used to tackle this issue.
+
+\subsubsection{\acl{us}}
+
 Considering the problem of imbalanced, \ac{us} is performed such that the number of samples of the majority class is reduced to be equal to the number of samples of the minority class.
 The following methods are considered to perform such balancing.
+
 
 \begin{description}
   \item[\Ac{rus}] is performed by randomly selecting without replacement a subset of samples from the majority class such that the number of samples is then equal in both minority and majority classes.
@@ -95,18 +54,22 @@ If $y_i$ corresponds to the majority class and $y_i \neq y_m$, $x_i$ is rejected
 If $y_i$ corresponds to the minority class and and $y_i \neq y_m$, then the $k$ \ac{nn} are rejected from the final subset.
 \end{description}
 
-In the contrary, the data balancing can be performed by \ac{os} in which the new samples belonging to the minority class are generated aiming at equalizing the number of samples in both classes.
+\subsubsection{\acl{os}}
+
+\noindent In the contrary, the data balancing can be performed by \ac{os} in which the new samples belonging to the minority class are generated aiming at equalizing the number of samples in both classes.
 Two different methods are considered.
 
 \begin{description}
-  \item[\Ac{ros}] is performed by randomly replicating the samples of the minority class such that the number of samples is equal in both minority and majority classes.
-  \item[\Ac{smote}] is a method to generate synthetic samples in the feature space~\cite{chawla2002smote}.
+\item[\Ac{ros}] is performed by randomly replicating the samples of the minority class such that the number of samples is equal in both minority and majority classes.
+\item[\Ac{smote}] is a method to generate synthetic samples in the feature space~\cite{chawla2002smote}.
 Let define $x_i$ as a sample belonging to the minority class.
 Let define $x_{nn}$ as a randomly selected sample from the $k$ \ac{nn} of $x_i$.
 Therefore, a new sample $x_j$ is generated such that $x_j = x_i + \sigma \left( x_{nn} - x_i \right)$, where $\sigma$ is a random number in the interval $\left[0,1\right]$.
 \end{description}
 
-Subsequently, \ac{os} methods can be combined with \ac{us} methods to clean the subset created.
+\subsubsection{Combination of \ac{os} and \ac{us}}
+
+\noindent Subsequently, \ac{os} methods can be combined with \ac{us} methods to clean the subset created.
 In that regard, two different combinations are tested.
 
 \begin{description}
@@ -117,21 +80,70 @@ In that regard, two different combinations are tested.
 
 \section{\uppercase{Classification}}
 \label{sec:clas-val}
-\noindent The classification is performed using a \ac{rf} classifier. 
+
+\noindent The classification is performed using a \ac{rf} classifier.
+
+\include*{content/method/framework-result-ls}
+
+\input{./content/experiments-results/figures/evaluation_corolary_def.tex}
+\begin{figure}
+
+  \def\myRadius{.65cm}
+  \def\vennSpace{(0,0) rectangle (2.6cm,1.6cm)}
+  \def\predictedCircle{(.8cm,.8cm) circle (\myRadius)}
+  \def\actualCircle{(1.8cm,.8cm) circle (\myRadius)}
+  \def\myLabelRadius{.450cm}
+
+  \subfloat[][Confusion matrix with truly and falsely positive samples detected (TP, FP) in the first row, from left to right and the falsely and truly negative samples detected (FN, TN) in the second row, from left to right.]{
+    \label{fig:evaluation:confusion_matrix}
+    \begin{tikzpicture}[scale=0.5]
+      \node at (0,0){
+        \begin{tabular}{
+            >{\centering}m{1em} >{\centering}m{1em} >{\centering}m{1in} >{\centering\arraybackslash}m{1in}}
+          % c>{\centering}m{2em}ccc}
+          & & \multicolumn{2}{c}{ Actual Class }\\
+          & & A+ & A- \\
+          % \parbox[t]{2mm}{\multirow{2}{*}{\rotatebox[origin=c]{90}{\usebox \centering Predicted Class}}}& P+ &  \tikz{\tp} & \tikz{\fp} \\
+          \multirow{3}{*}{\rotatebox[origin=c]{90}{Predicted Class}}& P+ &  \tikz{\tp} & \tikz{\fp} \\
+          & P- & \tikz{\fn} & \tikz{\tn}
+        \end{tabular}
+      };
+    \end{tikzpicture}
+  }\\
+  \centering
+  \subfloat[][\acl*{se} and \acl*{sp} evaluation, corresponding to the ratio of the doted area over the blue area.]{
+    \label{fig:evaluation:roc_axis}
+    \begin{tikzpicture}[scale=0.5]
+      \def\seEquation{$SE = \frac{TP}{TP+FN}$}
+      \def\spEquation{$SP = \frac{TN}{TN+FP}$}
+      \node[label={[]below:\seEquation}](se){\tikz{\se}};
+      \node[right=5pt of se, label={[]below:\spEquation}]{\tikz{\sp}};
+      % \node[label={[]right:\seEquation}](se){\tikz{\se}};
+      % \node[below=5pt of se, label={[]right:\spEquation}]{\tikz{\sp}};
+    \end{tikzpicture}
+  }
+
+  \caption{Evaluation metrics:
+    \protect\subref{fig:evaluation:confusion_matrix} confusion matrix,
+    \protect\subref{fig:evaluation:roc_axis} \acl*{se} - \acl*{sp}
+  }
+  \label{fig:evaluation}
+\end{figure} 
+
+
 \Ac{rf} is an ensemble of decision trees~\cite{breiman2001random} which generalizes the classification process by using different bootstrap samples of the original data and splitting the feature dimensions at each node.
 Each bootstrap with $M$ attributes is used to train one decision tree and at each node in the tree, the best decision is taken based on gini criterion on the randomly selected $m$ attributes (such as $m<<M$). 
 The trees in \ac{rf} are grown to their maximum length without any pruning.
 Each tree in the ensemble casts a unit vote in the final prediction and the final prediction is based on combination of all the votes. 
-\Ac{rf} is used with 100 un-pruned trees.  
+\Ac{rf} is used with 100 un-pruned trees.
 
 \subsection{Validation}
+
 The 10-fold cross-validation is used, in which \SI{80}{\percent} of the data are used for training and \SI{20}{\percent} are used for testing. 
 The training set is balanced using previously described imbalanced techniques. 
 The classification performance are reported in terms of average \ac{se}~(TPR) and \ac{sp}~(TNR) over 10 runs of cross-validation. 
 {\color{red} How can we justify why we are not using auc}
 The visual and analytic interpretation of these evaluation measures are depicted in Fig.\,\ref{fig:evaluation}.
- 
-
 
 %%% Local Variables: 
 %%% mode: latex
