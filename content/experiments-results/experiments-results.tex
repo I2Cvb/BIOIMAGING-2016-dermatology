@@ -1,7 +1,6 @@
 % include the figures path relative to the master file
 \graphicspath{ {./content/Experiments-results/figures/} }
 
-
 \section{\uppercase{Experimental Results}}
 \label{sec:exp-res} 
 
@@ -10,17 +9,18 @@
 Table~\ref{tab:tab1} can be divided into three main parts representing the results using imbalance data (IB), the balancing in the data space \ac{os} and the balancing in the feature space.
 These strategies are separated by a double horizontal line.
 The strategies performed in the feature space are subdivided into either \ac{os} or \ac{us} or a combination of \ac{os} follow by \ac{us} (see horizontal dashed line in Table~\ref{tab:tab1}).
-In cancer classification such as melanoma, correctly identifying the cancer lesions has very hight importance (i.e high \ac{se}). 
-Thus it is desired to achieve the highest \ac{se} with relative \ac{sp}. 
-In this regard, the highest \ac{se} for each feature set are highlighted in dark gray cell color. 
+
+In this table, based on the previously defined cost function, the best performances for each feature set are highlighted in gray cell colors.
+Table~\ref{tab:tab2} shows the obtained cost value for each configuration. 
+As it is evident strategies with lower cost function achieve better \ac{se} and \ac{sp}.
 
 The obtained results indicate that balancing techniques are essential and improve the classification performance. 
 % Certainly, some techniques are more subjects to the feature representations than others. 
 %However, the improvements in comparison to imbalanced classification is evident. 
-For this case study the \ac{us} techniques (\ac{rus}) and their combination with \ac{os} techniques (\ac{smote}+\ac{tl}) outperform the \ac{os} techniques. 
+For this case study the \ac{us} techniques and their combination with \ac{os} techniques outperform the \ac{os} techniques. 
 Due to the characteristics similarities of melanoma and dysplastic lesions, it is expected to have correlated feature space among melanoma and dysplastic lesions. 
 Subsequently, the miss-leading samples could be removed using \ac{us} and lead to better performance.
-Specifically to our purpose, \ac{rus} and the combination of all the features ($T_{1,2} C_{1,2}$) achieve the highest \ac{se} and \ac{sp} of 92.50 \% and 78.33 \%, respectively.
+Specifically to our purpose, \ac{rus} and the combination of all the features ($T_{1,2} C_{1,2}$) with the lowest cost function, achieve the highest \ac{se} and \ac{sp} of 92.50 \% and 78.33 \%, respectively.
 This performance was followed by \ac{nm2} algorithm and combination of Gabor and color features ($T_{2}, C_{1,2}$), with \ac{se} and \ac{sp} of 92.50 \% and 77.50 \%, respectively.  
 Focusing only on \ac{os} techniques, \ac{os} in data space outperforms the techniques performing in feature space.
 

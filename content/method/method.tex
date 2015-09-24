@@ -85,6 +85,61 @@ In that regard, two different combinations are tested.
 
 \include*{content/method/framework-result-ls}
 
+\begin{table*}[ht]
+\caption{The classification costs, $c$ for different balancing techniques and feature sets}
+\centering
+\resizebox{0.7\textwidth}{!}{
+\begin{tabular}{l ccc ccc ccc}
+\toprule
+%Features &  \multicolumn{3}{l}{Color}& \multicolumn{3}{l}{Texture} & \multicolumn{3}{l}{Combined}\\
+%  \cmidrule(r){2-4}  \cmidrule(r){5-7}  \cmidrule(r){8-10}  
+ Balancing techniques & \multicolumn{9}{c}{Classification cost, $c$} \\\cmidrule{2-10}
+		   & \multicolumn{1}{c}{$C_{1}$}& \multicolumn{1}{c}{$C_{2}$}& \multicolumn{1}{c}{$C_{1,2}$}& \multicolumn{1}{c}{$T_{1}$} &  \multicolumn{1}{c}{$T_{2}$} & \multicolumn{1}{c}{$T_{1,2}$}& \multicolumn{1}{c}{$T_{1},C_{1,2}$}& \multicolumn{1}{c}{$T_{2},C_{1,2}$}& \multicolumn{1}{c}{$T_{1,2},C_{1,2}$}\\ 
+  \midrule 
+IB& 						0.3267 			&  0.1950 			& 0.2225 		& 0.4008 			& 0.2550   & 0.2275 			& 0.1992 		  & 0.2142 			& 0.2025\\
+\midrule \midrule
+\ac{os}&   				\cellcolor[gray]{0.6}0.1708 &  0.1750    		& 0.1567    		& 0.4025    			&\cellcolor[gray]{0.6}0.2050   & 0.2133 			& 0.1867  		  & 0.1592 			& 0.1742\\
+\midrule \midrule
+\ac{os}&					0.3467 			&  0.1833 			& 0.2233  		& 0.4167 			& 0.2833   & 0.2508 			& 0.2083 		  & 0.2125 			& 0.2142\\
+\ac{smote}&				0.3100  			&  0.1892  			& 0.2133   		& 0.3658   			& 0.2825   & 0.2317  		& 0.1875 		  & 0.2192 			& 0.2175\\
+\hdashline \noalign{\vskip 3pt}
+\ac{rus}&				0.2733 			&  0.1625   			& 0.2075   		& 0.3817   			& 0.2375   & 0.1750  		& 0.1525  		  & 0.1750 			& \cellcolor[gray]{0.6}0.1317\\
+\ac{tl}&					0.3475  			&  0.1908   			& 0.2417   		& 0.4233   			& 0.2483   & 0.2208  		& 0.2025  		  & 0.2575 			& 0.2000\\
+\ac{cus}&				0.2408  			&  0.1817   			& 0.1608   		& 0.3992   			& 0.2700   & 0.1817  		& 0.1725  		  & 0.1833 			& 0.1658\\
+\ac{nm1}& 				0.3067  			&  0.1658   			& 0.1600   		& 0.3900   			& 0.2700   & 0.2083  		& 0.1617   		  & 0.1608 			& 0.1517\\
+\ac{nm2}& 				0.2883  			&  0.1575   			& 0.1583   		& 0.3475   			& 0.3192   & 0.2775  		& \cellcolor[gray]{0.6}0.1467 &\cellcolor[gray]{0.6}0.1350  & 0.1258\\
+\ac{nm3}& 				0.2050  			&  0.1517   			& 0.1683   		& 0.3342   			& 0.2350   & 0.1833  		& 0.1725  		  & 0.1700  			& 0.1608\\
+\ac{ncr}& 				0.2958  			& \cellcolor[gray]{0.6}0.1500  & 0.1617   		& 0.3233   			& 0.2067   &\cellcolor[gray]{0.6}0.1717  & 0.1558  		  & 0.1650  			& 0.1558\\
+\hdashline \noalign{\vskip 3pt}
+\ac{smote}+\ac{enn}& 	0.2492  			&  0.1650   			& 0.1617   		&\cellcolor[gray]{0.6}0.2875    & 0.2142   & 0.2017  		& 0.1575  		  & 0.1675  			& 0.1958\\
+\ac{smote}+\ac{tl}& 		0.2550 			&  0.1675   			&\cellcolor[gray]{0.6}0.1517 & 0.3283   		    & 0.2067   & 0.2125  		& 0.1617  		  & 0.2033  			& 0.1375\\
+\bottomrule
+\end{tabular}
+}
+\label{tab:tab2}
+\end{table*}
+\Ac{rf} is an ensemble of decision trees~\cite{breiman2001random} which generalizes the classification process by using different bootstrap samples of the original data and splitting the feature dimensions at each node.
+Each bootstrap with $M$ attributes is used to train one decision tree and at each node in the tree, the best decision is taken based on gini criterion on the randomly selected $m$ attributes (such as $m<<M$). 
+The trees in \ac{rf} are grown to their maximum length without any pruning.
+Each tree in the ensemble casts a unit vote in the final prediction and the final prediction is based on combination of all the votes. 
+\Ac{rf} is used with 100 un-pruned trees.
+
+\subsection{Validation}
+The 10-fold cross-validation is used, in which \SI{80}{\percent} of the data, 8 folds at a time, are used for training and \SI{20}{\percent}, 2 folds at a time, are used for testing. 
+The training set is balanced using previously described imbalanced techniques. 
+The classification performance are reported in terms of average \ac{se}~(TPR) and \ac{sp}~(TNR) over 10 runs of cross-validation. 
+The visual and analytic interpretation of these evaluation measures are depicted in Fig.\,\ref{fig:evaluation}.
+
+The best performance is selected based on the cost function defining the trade off between \ac{se} and \ac{sp}~\cite{barata2013towards} (see Eq.\,\ref{eq:cost}).
+\begin{equation}\label{eq:cost}
+C = \frac{c_{10}(1-\ac{se})+c_{01}(1-\ac{sp})}{c_{10}+c_{01}}
+\end{equation}
+\noindent In this definition, $c_{10}$ and $c_{01}$ are the costs of incorrectly classifying a melanoma and non-melanoma lesions, respectively.
+In cancer classification such as melanoma, correctly identifying the cancer lesions has high importance (i.e high \ac{se}). 
+Thus incorrect classification of melanoma is not desired and $c_{10}$ is a greater error and evidently more costly and should be penalized more. 
+In order to achieve a high \ac{se} without significantly reducing the value of \ac{sp}, barata~\emph{et al.} proposed to set $c_{10}$ = 1.5$c_{01}$ and $c_{01}$ = 1 ~\cite{barata2013towards}.  
+We considered the same configuration for our cost function. 
+
 \input{./content/experiments-results/figures/evaluation_corolary_def.tex}
 \begin{figure}
 
@@ -129,21 +184,6 @@ In that regard, two different combinations are tested.
   }
   \label{fig:evaluation}
 \end{figure} 
-
-
-\Ac{rf} is an ensemble of decision trees~\cite{breiman2001random} which generalizes the classification process by using different bootstrap samples of the original data and splitting the feature dimensions at each node.
-Each bootstrap with $M$ attributes is used to train one decision tree and at each node in the tree, the best decision is taken based on gini criterion on the randomly selected $m$ attributes (such as $m<<M$). 
-The trees in \ac{rf} are grown to their maximum length without any pruning.
-Each tree in the ensemble casts a unit vote in the final prediction and the final prediction is based on combination of all the votes. 
-\Ac{rf} is used with 100 un-pruned trees.
-
-\subsection{Validation}
-
-The 10-fold cross-validation is used, in which \SI{80}{\percent} of the data are used for training and \SI{20}{\percent} are used for testing. 
-The training set is balanced using previously described imbalanced techniques. 
-The classification performance are reported in terms of average \ac{se}~(TPR) and \ac{sp}~(TNR) over 10 runs of cross-validation. 
-{\color{red} How can we justify why we are not using auc}
-The visual and analytic interpretation of these evaluation measures are depicted in Fig.\,\ref{fig:evaluation}.
 
 %%% Local Variables: 
 %%% mode: latex
