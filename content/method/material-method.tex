@@ -67,7 +67,7 @@ This descriptor encodes the magnitude and sign differences of the central pixel 
 The sign $CLBP_S$, magnitude $CLBP_M$, and central grey level $CLBP_C$ binary pattern are created by encoding the local distance components and the central grey levels to binary patterns.  
 The \ac{clbp} are calculated for each pixel in a given image and the final descriptor is defined as their histogram.
 The rotation invariant, uniform, and normalized \ac{clbp} features is calculated considering a radius of \SI{24}{px}.
-
+The descriptor is composed of 26 dimensions.
 \item[Gabor filter ($T_{2}$)] is a linear filter which is defined as a modulation of a Gaussian kernel with a sinusoidal wave. 
 This filter is formulated in Eq.\,\eqref{Eq:Gabor} as two Gaussians with standard deviations of $\sigma_{x}$ and $\sigma_{y}$ that vary along $x$ and $y$ axes and it is modulated by a complex sinusoidal with a wavelength of $\lambda$. 
 Here $\theta$ represents the orientation of the Gabor filter, $\psi$ is the phase offset and $s$ is the scale factor. 
@@ -81,7 +81,7 @@ The filter bank is created using six different orientations equally spaced in th
   x' &= s\left( x\cos\theta+y\sin\theta\right) \ ,  \\
   y' &= s\left( -x\sin\theta +y\cos\theta\right) \ .
 \end{align*}
-
+The final descriptor is composed 48 feature dimensions.
 \end{description}
 
 

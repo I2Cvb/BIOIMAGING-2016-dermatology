@@ -118,14 +118,14 @@ In that regard, two different combinations are tested.
 \label{sec:clas-val}
 
 \noindent The classification is performed using a \ac{rf} classifier.
-\Ac{rf} is an ensemble of decision trees~\cite{breiman2001random} which generalizes the classification process by using different bootstrap samples of the original data and splitting the feature dimensions at each node.
-Each bootstrap with $M$ attributes is used to train one decision tree and at each node in the tree, the best decision is taken based on gini criterion on the randomly selected $m$ attributes (such as $m<<M$). 
+\Ac{rf} is an ensemble of decision trees~\cite{breiman2001random} which generalizes the classification process by applying two types of randomization: at the tree level, each tree is fed by a bootstrap made of $S'$ samples built from the original data of size $S$ such that  $S=S'$, and at the node level, a subset of feature dimensions $m$ is randomly selected from the original dimension $M$ such that $m=\sqrt{M}$. 
 The trees in \ac{rf} are grown to their maximum length without any pruning.
 Each tree in the ensemble casts a unit vote in the final prediction and the final prediction is based on combination of all the votes. 
-\Ac{rf} is used with 100 un-pruned trees.
+\Ac{rf} is used with 100 un-pruned trees and the original feature dimension of size $M=\{144,84,228,26,48,74,254,276,302\}$
 
 \subsection{Validation}
-The 10-fold cross-validation is used, in which \SI{80}{\percent} of the data, 8 folds at a time, are used for training and \SI{20}{\percent}, 2 folds at a time, are used for testing. 
+We used a 10-fold cross-validation scheme to validate our classifier with stratified sampling.
+However, differently from the usual 10-fold cross-validation, 8 folds were kept for training and 2 folds for testing at each iteration. 
 The training set is balanced using previously described imbalanced techniques. 
 The classification performance are reported in terms of average \ac{se}~(TPR) and \ac{sp}~(TNR) over 10 runs of cross-validation. 
 The visual and analytic interpretation of these evaluation measures are depicted in Fig.\,\ref{fig:evaluation}.
@@ -137,7 +137,7 @@ C = \frac{c_{10}(1-\ac{se})+c_{01}(1-\ac{sp})}{c_{10}+c_{01}}
 \noindent In this definition, $c_{10}$ and $c_{01}$ are the costs of incorrectly classifying a melanoma and non-melanoma lesions, respectively.
 In cancer classification such as melanoma, correctly identifying the cancer lesions has high importance (i.e high \ac{se}). 
 Thus incorrect classification of melanoma is not desired and $c_{10}$ is a greater error and evidently more costly and should be penalized more. 
-In order to achieve a high \ac{se} without significantly reducing the value of \ac{sp}, barata~\emph{et al.} proposed to set $c_{10}$ = 1.5$c_{01}$ and $c_{01}$ = 1 ~\cite{barata2013towards}.  
+In order to achieve a high \ac{se} without significantly reducing the value of \ac{sp}, Barata~\emph{et al.} proposed to set $c_{10}$ = 1.5$c_{01}$ and $c_{01}$ = 1 ~\cite{barata2013towards}.  
 We considered the same configuration for our cost function. 
 
 \input{./content/experiments-results/figures/evaluation_corolary_def.tex}
