@@ -18,7 +18,21 @@ However, akin to other medical applications, the percentage of melanoma cases in
 This problem is frequently referred as ``class imbalanced'' problem~\cite{prati2009data} and has been encountered in multiple areas such as telecommunication managements, bioinformatics, fraud detection, and medical diagnosis. 
 Imbalanced data substantially compromises the learning process since most of the standard machine learning algorithms expect balanced class distribution or an equal misclassification cost~\cite{he2009learning}.
 
-\input{./content/method/Figure4.tex}
+\begin{figure*}
+\begin{center}
+  \hspace*{\fill}
+  \subfloat[Melanoma lesion]{
+    \includegraphics[width=0.2\textwidth, height= 0.12\textheight]{M1_PH2.png}}\hfill
+  \subfloat[Dysplastic lesion]{
+    \includegraphics[width=0.2\textwidth, height= 0.12\textheight]{D1_PH2.png}}\hfill
+  \subfloat[Benign lesion]{
+    \includegraphics[width=0.2\textwidth, height= 0.12\textheight]{B1_PH2.png}}
+  \hspace*{\fill}
+  \caption{Samples of $PH^2$ dataset, representing melanoma, dysplastic and benign lesions, respectively}
+  \label{fig:PH2samples}
+\end{center}	
+\end{figure*}
+%Four images are discarded due to artifacts such as hair occlusions. 
 
 Medical data are prone to such drawbacks due to the fact that the portion of diseased samples or patients is far lower than healthy cases.
 Furthermore, the detection and classification of minority malignant cases are highly essential so that the \ac{se} of developed algorithms need to be maximized.

@@ -73,10 +73,13 @@ If $y_i$ corresponds to the minority class and and $y_i \neq y_m$, then the $k$ 
 \noindent In the contrary, the data balancing can be performed by \ac{os} in which the new samples belonging to the minority class are generated aiming at equalizing the number of samples in both classes.
 Two different methods are considered.
 
+\begin{description}
+\item[\Ac{ros}] is performed by randomly replicating the samples of the minority class such that the number of samples is equal in both minority and majority classes.
+\end{description}
+
 \include*{content/method/framework-result-ls}
 
 \begin{description}
-\item[\Ac{ros}] is performed by randomly replicating the samples of the minority class such that the number of samples is equal in both minority and majority classes.
 \item[\Ac{smote}] is a method to generate synthetic samples in the feature space~\cite{chawla2002smote}.
 Let define $x_i$ as a sample belonging to the minority class.
 Let define $x_{nn}$ as a randomly selected sample from the $k$ \ac{nn} of $x_i$.
@@ -86,7 +89,7 @@ Therefore, a new sample $x_j$ is generated such that $x_j = x_i + \sigma \left( 
 \begin{table*}[ht]
 \caption{The classification costs, $c$ for different balancing techniques and feature sets}
 \centering
-\resizebox{0.7\textwidth}{!}{
+\resizebox{1.\textwidth}{!}{
 \begin{tabular}{l ccc ccc ccc}
 \toprule
 %Features &  \multicolumn{3}{l}{Color}& \multicolumn{3}{l}{Texture} & \multicolumn{3}{l}{Combined}\\
@@ -109,7 +112,7 @@ IB& 						0.3267 			&  0.1950 			& 0.2225 		& 0.4008 			& 0.2550   & 0.2275 			&
 \ac{nm3}& 				0.2050  			&  0.1517   			& 0.1683   		& 0.3342   			& 0.2350   & 0.1833  		& 0.1725  		  & 0.1700  			& 0.1608\\
 \ac{ncr}& 				0.2958  			& \cellcolor[gray]{0.6}0.1500  & 0.1617   		& 0.3233   			& 0.2067   &\cellcolor[gray]{0.6}0.1717  & 0.1558  		  & 0.1650  			& 0.1558\\
 \hdashline \noalign{\vskip 3pt}
-\ac{smote}+\ac{enn}& 	0.2492  			&  0.1650   			& 0.1617   		&\cellcolor[gray]{0.6}0.2875    & 0.2142   & 0.2017  		& 0.1575  		  & 0.1675  			& 0.1958\\
+\ac{smote}+\acs*{enn}& 	0.2492  			&  0.1650   			& 0.1617   		&\cellcolor[gray]{0.6}0.2875    & 0.2142   & 0.2017  		& 0.1575  		  & 0.1675  			& 0.1958\\
 \ac{smote}+\ac{tl}& 		0.2550 			&  0.1675   			&\cellcolor[gray]{0.6}0.1517 & 0.3283   		    & 0.2067   & 0.2125  		& 0.1617  		  & 0.2033  			& 0.1375\\
 \bottomrule
 \end{tabular}
@@ -144,14 +147,14 @@ The training set is balanced using previously described imbalanced techniques.
 The classification performance are reported in terms of average \ac{se}~(TPR) and \ac{sp}~(TNR) over 10 runs of cross-validation. 
 The visual and analytic interpretation of these evaluation measures are depicted in Fig.\,\ref{fig:evaluation}.
 
-The best performance is selected based on the cost function defining the trade off between \ac{se} and \ac{sp}~\cite{barata2013towards} (see Eq.\,\ref{eq:cost}).
+The best performance is selected based on the cost function defining the trade off between \ac{se} and \ac{sp} as in \cite{barata2013towards}, which is formulated as:
 \begin{equation}\label{eq:cost}
-C = \frac{c_{10}(1-\ac{se})+c_{01}(1-\ac{sp})}{c_{10}+c_{01}}
+C = \frac{c_{10}(1-\ac{se})+c_{01}(1-\ac{sp})}{c_{10}+c_{01}} \ ,
 \end{equation}
-\noindent In this definition, $c_{10}$ and $c_{01}$ are the costs of incorrectly classifying a melanoma and non-melanoma lesions, respectively.
-In cancer classification such as melanoma, correctly identifying the cancer lesions has high importance (i.e high \ac{se}). 
+\noindent where, $c_{10}$ and $c_{01}$ are the costs of incorrectly classifying a melanoma and non-melanoma lesions, respectively.
+In cancer classification such as melanoma, correctly identifying the cancer lesions has high importance (i.e., high \ac{se}). 
 Thus incorrect classification of melanoma is not desired and $c_{10}$ is a greater error and evidently more costly and should be penalized more. 
-In order to achieve a high \ac{se} without significantly reducing the value of \ac{sp}, Barata~\emph{et al.} proposed to set $c_{10}$ = 1.5$c_{01}$ and $c_{01}$ = 1 ~\cite{barata2013towards}.  
+In order to achieve a high \ac{se} without significantly reducing the value of \ac{sp}, Barata~\emph{et al.} proposed to set $c_{10} = 1.5 \times c_{01}$ and $c_{01} = 1$~\cite{barata2013towards}.  
 We considered the same configuration for our cost function. 
 
 \input{./content/experiments-results/figures/evaluation_corolary_def.tex}
