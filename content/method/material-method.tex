@@ -1,18 +1,6 @@
 % include the figures path relative to the master file
 \graphicspath{ {./content/method/figures/} }
 
-\begin{figure*}
-	\subfloat[][]{
-	\label{fig:GridOriginal}\includegraphics[width=0.3\textwidth]{OG.png}}\hfill
-	\subfloat[][]{
-	\label{fig:GridGaussian}\includegraphics[width=0.3\textwidth]{GG3_80.png}}\hfill
-	\subfloat[][]{
-	\label{fig:GridBarrel}\includegraphics[width=0.3\textwidth]{BG3_145.png}}
-	\caption{Data space transformation: \protect\subref{fig:GridOriginal} original synthetic data, \protect\subref{fig:GridGaussian} \acs*{rdgm} deformation, \protect\subref{fig:GridBarrel} \acs*{bd} deformation.}
-	\label{fig:DSOS}
-\end{figure*}
-
-
 \section{\uppercase{Material and Methods}}\label{sec:mm}
 
 % Our framework is formulated as a standard classification framework. First the dermoscopy images are represented by a set of elements or features. With reference to our previous studies on melanoma classification \cite{rastgoo2015automatic, rastgoo2015ensemble} the texture and color features with the highest performance are selected. These features include, \Ac{clbp} \cite{guo2010completed}, Gabor filter \cite{Manjunath96-45}, color variance and histogram and hue and opponent angle color histogram \cite{van2006coloring}. The extracted features are explained in the following. The retrieved features are used to train a \Ac{rf} classifier.
@@ -39,14 +27,16 @@ Figure~\ref{fig:PH2samples} shows three samples of this dataset, representing me
 
 \begin{figure*}
 \begin{center}
-	\subfloat[Melanoma lesion]{
-	\includegraphics[width=0.2\textwidth, height= 0.12\textheight]{M1_PH2.png}}\
-	\subfloat[Dysplastic lesion]{
-	\includegraphics[width=0.2\textwidth, height= 0.12\textheight]{D1_PH2.png}}\
-	\subfloat[Benign lesion]{
-	\includegraphics[width=0.2\textwidth, height= 0.12\textheight]{B1_PH2.png}}
-	\caption{Samples of PH2 dataset, representing melanoma, dysplastic and benign lesions, respectively}
-	\label{fig:PH2samples}
+  \hspace*{\fill}
+  \subfloat[Melanoma lesion]{
+    \includegraphics[width=0.2\textwidth, height= 0.12\textheight]{M1_PH2.png}}\hfill
+  \subfloat[Dysplastic lesion]{
+    \includegraphics[width=0.2\textwidth, height= 0.12\textheight]{D1_PH2.png}}\hfill
+  \subfloat[Benign lesion]{
+    \includegraphics[width=0.2\textwidth, height= 0.12\textheight]{B1_PH2.png}}
+  \hspace*{\fill}
+  \caption{Samples of PH2 dataset, representing melanoma, dysplastic and benign lesions, respectively}
+  \label{fig:PH2samples}
 \end{center}	
 \end{figure*}
 %Four images are discarded due to artifacts such as hair occlusions. 

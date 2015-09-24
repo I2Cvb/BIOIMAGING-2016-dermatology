@@ -6,6 +6,20 @@
 \noindent Considering a binary classification problem, the class with the smallest number of samples is defined as the \textit{minority} class and its counterpart is defined as the \textit{majority} class.
 The problem of data balancing corresponds to equalize the number of samples of both the minority and majority classes. This task can be achieved in either data or feature space.
 
+\begin{figure*}
+  \hspace*{\fill}
+  \subfloat[][]{
+    \label{fig:GridOriginal}\includegraphics[width=0.3\textwidth]{OG.png}}\hfill
+  \subfloat[][]{
+    \label{fig:GridGaussian}\includegraphics[width=0.3\textwidth]{GG3_80.png}}\hfill
+  \subfloat[][]{
+    \label{fig:GridBarrel}\includegraphics[width=0.3\textwidth]{BG3_145.png}}
+  \hspace*{\fill}
+  \caption{Data space transformation: \protect\subref{fig:GridOriginal} original synthetic data, \protect\subref{fig:GridGaussian} \acs*{rdgm} deformation, \protect\subref{fig:GridBarrel} \acs*{bd} deformation.}
+  \label{fig:DSOS}
+\end{figure*}
+
+
 \subsection{Data space sampling}
 
 Data space sampling is related with the generation of new synthetic samples by modifying the original data ahead of any feature extraction processes. 
@@ -59,6 +73,8 @@ If $y_i$ corresponds to the minority class and and $y_i \neq y_m$, then the $k$ 
 \noindent In the contrary, the data balancing can be performed by \ac{os} in which the new samples belonging to the minority class are generated aiming at equalizing the number of samples in both classes.
 Two different methods are considered.
 
+\include*{content/method/framework-result-ls}
+
 \begin{description}
 \item[\Ac{ros}] is performed by randomly replicating the samples of the minority class such that the number of samples is equal in both minority and majority classes.
 \item[\Ac{smote}] is a method to generate synthetic samples in the feature space~\cite{chawla2002smote}.
@@ -66,8 +82,6 @@ Let define $x_i$ as a sample belonging to the minority class.
 Let define $x_{nn}$ as a randomly selected sample from the $k$ \ac{nn} of $x_i$.
 Therefore, a new sample $x_j$ is generated such that $x_j = x_i + \sigma \left( x_{nn} - x_i \right)$, where $\sigma$ is a random number in the interval $\left[0,1\right]$.
 \end{description}
-
-\include*{content/method/framework-result-ls}
 
 \begin{table*}[ht]
 \caption{The classification costs, $c$ for different balancing techniques and feature sets}
