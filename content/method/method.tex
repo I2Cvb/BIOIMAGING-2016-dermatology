@@ -67,22 +67,6 @@ Let define $x_{nn}$ as a randomly selected sample from the $k$ \ac{nn} of $x_i$.
 Therefore, a new sample $x_j$ is generated such that $x_j = x_i + \sigma \left( x_{nn} - x_i \right)$, where $\sigma$ is a random number in the interval $\left[0,1\right]$.
 \end{description}
 
-\subsubsection{Combination of \ac{os} and \ac{us}}
-
-\noindent Subsequently, \ac{os} methods can be combined with \ac{us} methods to clean the subset created.
-In that regard, two different combinations are tested.
-
-\begin{description}
-  \item[\ac{smote} + \ac{tl}] are combined to clean the samples created using \ac{smote}~\cite{batista2003balancing}.
-\ac{smote} over-sampling can lead to overfitting which can be avoided by removing the \ac{tl} from both majority and minority classes~\cite{prati2009data}.
-  \item[\ac{smote} + \ac{enn}] are combined for the same aforementioned reason~\cite{batista2004study}.
-\end{description}
-
-\section{\uppercase{Classification}}
-\label{sec:clas-val}
-
-\noindent The classification is performed using a \ac{rf} classifier.
-
 \include*{content/method/framework-result-ls}
 
 \begin{table*}[ht]
@@ -118,6 +102,22 @@ IB& 						0.3267 			&  0.1950 			& 0.2225 		& 0.4008 			& 0.2550   & 0.2275 			&
 }
 \label{tab:tab2}
 \end{table*}
+
+\subsubsection{Combination of \ac{os} and \ac{us}}
+
+\noindent Subsequently, \ac{os} methods can be combined with \ac{us} methods to clean the subset created.
+In that regard, two different combinations are tested.
+
+\begin{description}
+  \item[\ac{smote} + \ac{tl}] are combined to clean the samples created using \ac{smote}~\cite{batista2003balancing}.
+\ac{smote} over-sampling can lead to overfitting which can be avoided by removing the \ac{tl} from both majority and minority classes~\cite{prati2009data}.
+  \item[\ac{smote} + \ac{enn}] are combined for the same aforementioned reason~\cite{batista2004study}.
+\end{description}
+
+\section{\uppercase{Classification}}
+\label{sec:clas-val}
+
+\noindent The classification is performed using a \ac{rf} classifier.
 \Ac{rf} is an ensemble of decision trees~\cite{breiman2001random} which generalizes the classification process by using different bootstrap samples of the original data and splitting the feature dimensions at each node.
 Each bootstrap with $M$ attributes is used to train one decision tree and at each node in the tree, the best decision is taken based on gini criterion on the randomly selected $m$ attributes (such as $m<<M$). 
 The trees in \ac{rf} are grown to their maximum length without any pruning.
