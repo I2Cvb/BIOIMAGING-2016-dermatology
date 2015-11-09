@@ -15,7 +15,7 @@ In addition, melanoma are clinically diagnosed through visual inspection and dee
 However, these inspections and analysis are challenging due to the similarity of the different lesion types (dysplastic and melanoma) and the necessity to follow-up patient over years.
 Therefore, the research communities have dedicated their efforts to develop computerized lesion analysis algorithms for classification of melanoma lesions. 
 However, akin to other medical applications, the percentage of melanoma cases in comparison with benign and dysplatic cases is far less. 
-This problem is frequently referred as ``class imbalanced'' problem~\cite{prati2009data} and has been encountered in multiple areas such as telecommunication managements, bioinformatics, fraud detection, and medical diagnosis. 
+This problem is frequently referred as ``class imbalance'' problem~\cite{prati2009data} and has been encountered in multiple areas such as telecommunication managements, bioinformatics, fraud detection, and medical diagnosis. 
 Imbalanced data substantially compromises the learning process since most of the standard machine learning algorithms expect balanced class distribution or an equal misclassification cost~\cite{he2009learning}.
 
 \begin{figure*}
@@ -36,7 +36,7 @@ Imbalanced data substantially compromises the learning process since most of the
 
 Medical data are prone to such drawbacks due to the fact that the portion of diseased samples or patients is far lower than healthy cases.
 Furthermore, the detection and classification of minority malignant cases are highly essential so that the \ac{se} of developed algorithms need to be maximized.
-Consequently, the problem of imbalanced data is usually addressed by employing different techniques which do not vitiate the topology of the data.
+Consequently, the problem of imbalanced data is usually addressed by employing different techniques which do not impair the topology of the data.
 Despite the fact that classification of malignant melanoma has been extensively studied~\cite{rastgoo2015automatic}, up to our knowledge, only few works tackled the issue implied by imbalanced dataset~\cite{barata2013two,celebi2007methodological}.
 Barata~\emph{et al.} generate new synthetic samples by adding a Gaussian noise with fixed parameters to the samples belonging to the minority class~\cite{barata2013two}.
 Celebi~\emph{et al.} and Capdehourat~\emph{et al.} over-sampled their dataset using \ac{smote}~\cite{chawla2002smote} to improve the \ac{se} of their algorithm~\cite{celebi2007methodological, capdehourat2009pigmented}.

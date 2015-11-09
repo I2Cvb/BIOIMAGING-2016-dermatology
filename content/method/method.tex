@@ -24,7 +24,7 @@ The problem of data balancing corresponds to equalize the number of samples of b
 
 Data space sampling is related with the generation of new synthetic samples by modifying the original data ahead of any feature extraction processes. 
 \Ac{os} is performed on the original dataset by generating synthetic melanoma images based on two types of deformation~\cite{rastgoo2015ensemble}. Furthermore, cubic b-spline interpolation is used with both methods to approximate non-integer points in the image.
-These deformations are considered since they are more likely to occur, due to un-flatten surface of some body parts, skin wrinkles, camera rotation, and position. 
+These deformations are considered since they are more likely to occur, due to non-planar surface of some body parts, skin wrinkles, camera rotation, and position. 
 %Different rotations and barrel deformation are considered to account for camera rotation and body un-flatten surfaces. 
 %The \ac{rdgm} deformation with specific Gaussian criteria is considered to account for acceptable amount of wrinkles.
 
@@ -68,6 +68,7 @@ If $y_i$ corresponds to the majority class and $y_i \neq y_m$, $x_i$ is rejected
 If $y_i$ corresponds to the minority class and and $y_i \neq y_m$, then the $k$ \ac{nn} are rejected from the final subset.
 \end{description}
 
+The number of nearest neighbor is set to three ($k$ = 3), for algorithms such as \ac{nm1}, \ac{nm2}, \ac{nm3}, and \ac{ncr}.
 \subsubsection{\acl{os}}
 
 \noindent In the contrary, the data balancing can be performed by \ac{os} in which the new samples belonging to the minority class are generated aiming at equalizing the number of samples in both classes.
@@ -95,25 +96,43 @@ Therefore, a new sample $x_j$ is generated such that $x_j = x_i + \sigma \left( 
 %Features &  \multicolumn{3}{l}{Color}& \multicolumn{3}{l}{Texture} & \multicolumn{3}{l}{Combined}\\
 %  \cmidrule(r){2-4}  \cmidrule(r){5-7}  \cmidrule(r){8-10}  
  Balancing techniques & \multicolumn{9}{c}{Classification cost, $C$} \\\cmidrule{2-10}
-		   & \multicolumn{1}{c}{$C_{1}$}& \multicolumn{1}{c}{$C_{2}$}& \multicolumn{1}{c}{$C_{1,2}$}& \multicolumn{1}{c}{$T_{1}$} &  \multicolumn{1}{c}{$T_{2}$} & \multicolumn{1}{c}{$T_{1,2}$}& \multicolumn{1}{c}{$T_{1},C_{1,2}$}& \multicolumn{1}{c}{$T_{2},C_{1,2}$}& \multicolumn{1}{c}{$T_{1,2},C_{1,2}$}\\ 
-  \midrule 
+		   & \multicolumn{1}{c}{$C_{1}$}& \multicolumn{1}{c}{$C_{2}$}& \multicolumn{1}{c}{$C_{1,2}$}& \multicolumn{1}{c}{$T_{1}$} &  \multicolumn{1}{c}{$T_{2}$} & \multicolumn{1}{c}{$T_{1,2}$}& \multicolumn{1}{c}{$T_{1},C_{1,2}$}& \multicolumn{1}{c}{$T_{2},C_{1,2}$}& \multicolumn{1}{c}{$T_{1,2},C_{1,2}$}\\
+\midrule
+\multicolumn{10}{c}{}\\[-2.2ex] 
 IB& 						0.3267 			&  0.1950 			& 0.2225 		& 0.4008 			& 0.2550   & 0.2275 			& 0.1992 		  & 0.2142 			& 0.2025\\
+\multicolumn{10}{c}{}\\[-2.2ex]
 \midrule \midrule
+\multicolumn{10}{c}{}\\[-2.2ex]
 \ac{os}&   				\cellcolor[gray]{0.6}0.1708 &  0.1750    		& 0.1567    		& 0.4025    			&\cellcolor[gray]{0.6}0.2050   & 0.2133 			& 0.1867  		  & 0.1592 			& 0.1742\\
+\multicolumn{10}{c}{}\\[-2.2ex]
 \midrule \midrule
+\multicolumn{10}{c}{}\\[-2.2ex]
 \ac{os}&					0.3467 			&  0.1833 			& 0.2233  		& 0.4167 			& 0.2833   & 0.2508 			& 0.2083 		  & 0.2125 			& 0.2142\\
+\multicolumn{10}{c}{}\\[-2.2ex]
 \ac{smote}&				0.3100  			&  0.1892  			& 0.2133   		& 0.3658   			& 0.2825   & 0.2317  		& 0.1875 		  & 0.2192 			& 0.2175\\
+\multicolumn{10}{c}{}\\[-2.2ex]
 \hdashline \noalign{\vskip 3pt}
+\multicolumn{10}{c}{}\\[-2.2ex]
 \ac{rus}&				0.2733 			&  0.1625   			& 0.2075   		& 0.3817   			& 0.2375   & 0.1750  		& 0.1525  		  & 0.1750 			& 0.1317\\
+\multicolumn{10}{c}{}\\[-2.2ex]
 \ac{tl}&					0.3475  			&  0.1908   			& 0.2417   		& 0.4233   			& 0.2483   & 0.2208  		& 0.2025  		  & 0.2575 			& 0.2000\\
+\multicolumn{10}{c}{}\\[-2.2ex]
 \ac{cus}&				0.2408  			&  0.1817   			& 0.1608   		& 0.3992   			& 0.2700   & 0.1817  		& 0.1725  		  & 0.1833 			& 0.1658\\
+\multicolumn{10}{c}{}\\[-2.2ex]
 \ac{nm1}& 				0.3067  			&  0.1658   			& 0.1600   		& 0.3900   			& 0.2700   & 0.2083  		& 0.1617   		  & 0.1608 			& 0.1517\\
+\multicolumn{10}{c}{}\\[-2.2ex]
 \ac{nm2}& 				0.2883  			&  0.1575   			& 0.1583   		& 0.3475   			& 0.3192   & 0.2775  		& \cellcolor[gray]{0.6}0.1467 &\cellcolor[gray]{0.6}0.1350  &\cellcolor[gray]{0.6}0.1258\\
+\multicolumn{10}{c}{}\\[-2.2ex]
 \ac{nm3}& 				0.2050  			&  0.1517   			& 0.1683   		& 0.3342   			& 0.2350   & 0.1833  		& 0.1725  		  & 0.1700  			& 0.1608\\
+\multicolumn{10}{c}{}\\[-2.2ex]
 \ac{ncr}& 				0.2958  			& \cellcolor[gray]{0.6}0.1500  & 0.1617   		& 0.3233   			& 0.2067   &\cellcolor[gray]{0.6}0.1717  & 0.1558  		  & 0.1650  			& 0.1558\\
+\multicolumn{10}{c}{}\\[-2.2ex]
 \hdashline \noalign{\vskip 3pt}
+\multicolumn{10}{c}{}\\[-2.2ex]
 \ac{smote}+\acs*{enn}& 	0.2492  			&  0.1650   			& 0.1617   		&\cellcolor[gray]{0.6}0.2875    & 0.2142   & 0.2017  		& 0.1575  		  & 0.1675  			& 0.1958\\
+\multicolumn{10}{c}{}\\[-2.2ex]
 \ac{smote}+\ac{tl}& 		0.2550 			&  0.1675   			&\cellcolor[gray]{0.6}0.1517 & 0.3283   		    & 0.2067   & 0.2125  		& 0.1617  		  & 0.2033  			& 0.1375\\
+\multicolumn{10}{c}{}\\[-2.2ex]
 \bottomrule
 \end{tabular}
 }
@@ -147,7 +166,9 @@ The training set is balanced using previously described imbalanced techniques.
 The classification performance are reported in terms of average \ac{se}~(TPR) and \ac{sp}~(TNR) over 10 runs of cross-validation. 
 The visual and analytic interpretation of these evaluation measures are depicted in Fig.\,\ref{fig:evaluation}.
 
-The best performance is selected based on the cost function defining the trade off between \ac{se} and \ac{sp} as in \cite{barata2013towards}, which is formulated as:
+To select the best performance, similar to \cite{barata2013towards}, we consider to evaluate the results based on a cost function, which defines the trade off between \ac{se} and \ac{sp}.
+This function is formulated as:
+%The best performance is selected based on the cost function defining the trade off between \ac{se} and \ac{sp} as in \cite{barata2013towards}, which is formulated as:
 \begin{equation}\label{eq:cost}
 C = \frac{c_{10}(1-\ac{se})+c_{01}(1-\ac{sp})}{c_{10}+c_{01}} \ ,
 \end{equation}
