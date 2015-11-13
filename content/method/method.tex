@@ -83,7 +83,7 @@ Two different methods are considered.
 \begin{description}
 \item[\Ac{smote}] is a method to generate synthetic samples in the feature space~\cite{chawla2002smote}.
 Let define $x_i$ as a sample belonging to the minority class.
-Let define $x_{nn}$ as a randomly selected sample from the $k$ \ac{nn} of $x_i$.
+Let define $x_{nn}$ as a randomly selected sample from the $k$ \ac{nn} of $x_i$ (here $k$ = 3).
 Therefore, a new sample $x_j$ is generated such that $x_j = x_i + \sigma \left( x_{nn} - x_i \right)$, where $\sigma$ is a random number in the interval $\left[0,1\right]$.
 \end{description}
 
@@ -149,6 +149,7 @@ In that regard, two different combinations are tested.
 \ac{smote} over-sampling can lead to overfitting which can be avoided by removing the \ac{tl} from both majority and minority classes~\cite{prati2009data}.
   \item[\ac{smote} + \ac{enn}] are combined for the same aforementioned reason~\cite{batista2004study}.
 \end{description}
+Similar to previous algorithms three nearest neighbor is considered.
 
 \section{\uppercase{Classification}}
 \label{sec:clas-val}
