@@ -10,11 +10,12 @@ In 2014, the American Cancer Society also reported that the number of new diagno
 %Nevertheless, early diagnosis play a key role since that melanoma being the most treatable kind of cancer.
 Nevertheless, melanoma is the most treatable kind of cancer if diagnosed early. 
 
-The clinical diagnosis of early stage melanoma is commonly based on the ``ABCDE'' rule~\cite{abbasi2004early}, defined as Asymmetry, irregular Borders, variegated Colours, Diameters greater than \SI{6}{\milli \metre} and Evolving stages over time. 
-In addition, melanoma are clinically diagnosed through visual inspection and deep analysis of the lesion, using clinical imaging techniques such as dermoscopic imaging. 
-However, these inspections and analysis are challenging due to the similarity of the different lesion types (dysplastic and melanoma) and the necessity to follow-up patient over years.
+Melanoma is clinically diagnosed through visual inspection and deep analysis of the lesion, using clinical imaging techniques such as dermoscopic imaging.
+The clinical diagnosis of early stage melanoma is commonly based on the ``ABCDE'' rule~\cite{abbasi2004early}, defined as Asymmetry, irregular Borders, variegated Colors, Diameters greater than \SI{6}{\milli \metre} and its Evolution over time. %ving stages over time.  
+These inspections and analysis are challenging since, first different lesions such as melanoma and dysplastic nevi share similar characteristics in terms of ``ABCD'' and second the necessity to perform patient follow-up over the years.
 Therefore, the research communities have dedicated their efforts to develop computerized lesion analysis algorithms for classification of melanoma lesions. 
-However, akin to other medical applications, the percentage of melanoma cases in comparison with benign and dysplatic cases is far less. 
+
+When studying skin lesions, akin to other medical applications, the percentage of malignant cases is far less when compared with benign cases. 
 This problem is frequently referred as ``class imbalance'' problem~\cite{prati2009data} and has been encountered in multiple areas such as telecommunication managements, bioinformatics, fraud detection, and medical diagnosis. 
 Imbalanced data substantially compromises the learning process since most of the standard machine learning algorithms expect balanced class distribution or an equal misclassification cost~\cite{he2009learning}.
 
@@ -43,7 +44,8 @@ Celebi~\emph{et al.} and Capdehourat~\emph{et al.} over-sampled their dataset us
 
 This paper provides an insight to the specific problem of classification of imbalanced dataset for malenoma. 
 To proceed, we review different techniques proposed by the machine learning community and compile a comprehensive quantitative evaluation. 
-The rest of this paper is organized as follows: an overview of the classification framework designed to investigate data balancing techniques are presented through Sect.\,\ref{sec:mm} - Sect.\,\ref{sec:clas-val} while the balancing strategies are described in Sect.\,\ref{sec:met}.
+The rest of this paper is organized as follows: an overview of the classification framework designed to investigate data balancing techniques is presented in Sect.\,\ref{sec:mm}.
+The balancing strategies are explained in depth in Sect.\,\ref{sec:met} and the validation and classification are discussed in Sect.\,\ref{sec:clas-val}.
 A quantitative evaluation is discussed in Sect.\,\ref{sec:exp-res} followed by a concluding section.
 
 

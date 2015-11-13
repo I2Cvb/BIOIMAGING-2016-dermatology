@@ -66,9 +66,9 @@ Let define $x_i$ as a sample of the dataset with its associated class label $y_i
 Let define $y_m$ as the class of the majority vote of the $k$ \ac{nn} of the sample $x_i$.
 If $y_i$ corresponds to the majority class and $y_i \neq y_m$, $x_i$ is rejected from the final subset.
 If $y_i$ corresponds to the minority class and and $y_i \neq y_m$, then the $k$ \ac{nn} are rejected from the final subset.
+In our experiment $k$ is fixed to 3.
 \end{description}
 
-The number of nearest neighbor is set to three ($k$ = 3), for algorithms such as \ac{nm1}, \ac{nm2}, \ac{nm3}, and \ac{ncr}.
 \subsubsection{\acl{os}}
 
 \noindent In the contrary, the data balancing can be performed by \ac{os} in which the new samples belonging to the minority class are generated aiming at equalizing the number of samples in both classes.
@@ -83,7 +83,7 @@ Two different methods are considered.
 \begin{description}
 \item[\Ac{smote}] is a method to generate synthetic samples in the feature space~\cite{chawla2002smote}.
 Let define $x_i$ as a sample belonging to the minority class.
-Let define $x_{nn}$ as a randomly selected sample from the $k$ \ac{nn} of $x_i$ (here $k$ = 3).
+Let define $x_{nn}$ as a randomly selected sample from the $k$ \ac{nn} of $x_i$, with $k$ set to 3.
 Therefore, a new sample $x_j$ is generated such that $x_j = x_i + \sigma \left( x_{nn} - x_i \right)$, where $\sigma$ is a random number in the interval $\left[0,1\right]$.
 \end{description}
 
@@ -149,7 +149,6 @@ In that regard, two different combinations are tested.
 \ac{smote} over-sampling can lead to overfitting which can be avoided by removing the \ac{tl} from both majority and minority classes~\cite{prati2009data}.
   \item[\ac{smote} + \ac{enn}] are combined for the same aforementioned reason~\cite{batista2004study}.
 \end{description}
-Similar to previous algorithms three nearest neighbor is considered.
 
 \section{\uppercase{Classification}}
 \label{sec:clas-val}
@@ -167,7 +166,7 @@ The training set is balanced using previously described imbalanced techniques.
 The classification performance are reported in terms of average \ac{se}~(TPR) and \ac{sp}~(TNR) over 10 runs of cross-validation. 
 The visual and analytic interpretation of these evaluation measures are depicted in Fig.\,\ref{fig:evaluation}.
 
-To select the best performance, similar to \cite{barata2013towards}, we consider to evaluate the results based on a cost function, which defines the trade off between \ac{se} and \ac{sp}.
+To select the best performance, similarly to \cite{barata2013towards} we consider to evaluate the results based on a cost function, which defines the trade off between \ac{se} and \ac{sp}.
 This function is formulated as:
 %The best performance is selected based on the cost function defining the trade off between \ac{se} and \ac{sp} as in \cite{barata2013towards}, which is formulated as:
 \begin{equation}\label{eq:cost}
