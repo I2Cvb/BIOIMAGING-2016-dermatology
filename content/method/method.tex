@@ -71,15 +71,14 @@ In our experiment $k$ is fixed to 3.
 
 \subsubsection{\acl{os}}
 
-\noindent In the contrary, the data balancing can be performed by \ac{os} in which the new samples belonging to the minority class are generated aiming at equalizing the number of samples in both classes.
-Two different methods are considered.
+\noindent In the contrary, the data balancing can be performed by \ac{os} in which the new samples belonging to the
+\include*{content/method/framework-result-ls}
 
+\noindent minority class are generated aiming at equalizing the number of samples in both classes.
+Two different methods are considered.
 \begin{description}
 \item[\Ac{ros}] is performed by randomly replicating the samples of the minority class such that the number of samples is equal in both minority and majority classes.
 \end{description}
-
-\include*{content/method/framework-result-ls}
-
 \begin{description}
 \item[\Ac{smote}] is a method to generate synthetic samples in the feature space~\cite{chawla2002smote}.
 Let define $x_i$ as a sample belonging to the minority class.
