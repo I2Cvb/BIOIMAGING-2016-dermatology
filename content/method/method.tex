@@ -8,11 +8,11 @@ The problem of data balancing corresponds to equalize the number of samples of b
 
 \begin{figure*}
   \hspace*{\fill}
-  \subfloat[][]{
+  \subfigure[][]{
     \label{fig:GridOriginal}\includegraphics[width=0.3\textwidth]{OG.png}}\hfill
-  \subfloat[][]{
+  \subfigure[][]{
     \label{fig:GridGaussian}\includegraphics[width=0.3\textwidth]{GG3_80.png}}\hfill
-  \subfloat[][]{
+  \subfigure[][]{
     \label{fig:GridBarrel}\includegraphics[width=0.3\textwidth]{BG3_145.png}}
   \hspace*{\fill}
   \caption{Data space transformation: \protect\subref{fig:GridOriginal} original synthetic data, \protect\subref{fig:GridGaussian} \acs*{rdgm} deformation, \protect\subref{fig:GridBarrel} \acs*{bd} deformation.}
@@ -186,7 +186,7 @@ We considered the same configuration for our cost function.
   \def\actualCircle{(1.8cm,.8cm) circle (\myRadius)}
   \def\myLabelRadius{.450cm}
 
-  \subfloat[][Confusion matrix with truly and falsely positive samples detected (TP, FP) in the first row, from left to right and the falsely and truly negative samples detected (FN, TN) in the second row, from left to right.]{
+  \subfigure[][Confusion matrix with truly and falsely positive samples detected (TP, FP) in the first row, from left to right and the falsely and truly negative samples detected (FN, TN) in the second row, from left to right.]{
     \label{fig:evaluation:confusion_matrix}
     \begin{tikzpicture}[scale=0.5]
       \node at (0,0){
@@ -203,7 +203,7 @@ We considered the same configuration for our cost function.
     \end{tikzpicture}
   }\\
   \centering
-  \subfloat[][\acl*{se} and \acl*{sp} evaluation, corresponding to the ratio of the doted area over the blue area.]{
+  \subfigure[][\acl*{se} and \acl*{sp} evaluation, corresponding to the ratio of the doted area over the blue area.]{
     \label{fig:evaluation:roc_axis}
     \begin{tikzpicture}[scale=0.5]
       \def\seEquation{$SE = \frac{TP}{TP+FN}$}
